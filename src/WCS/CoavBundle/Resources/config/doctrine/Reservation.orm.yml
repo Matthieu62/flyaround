@@ -1,0 +1,24 @@
+WCS\CoavBundle\Entity\Reservation:
+    type: entity
+    table: null
+    repositoryClass: WCS\CoavBundle\Repository\ReservationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nbReservedSeats:
+            type: smallint
+        publicationDate:
+            type: datetime
+        passenger:
+            type: string
+            length: '32'
+        flight:
+            type: string
+            length: '32'
+        wasDone:
+            type: boolean
+    lifecycleCallbacks: {  }
