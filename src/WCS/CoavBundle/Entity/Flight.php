@@ -69,7 +69,7 @@ class Flight
     private $description;
 
     /**
-     * @ORM\OneToOne(targetEntity="WCS\CoavBundle\Entity\User", mappedBy="pilots")
+     * @ORM\OneToOne(targetEntity="WCS\CoavBundle\Entity\User", inversedBy="pilots")
      * @ORM\JoinColumn(name="pilot")
      */
     private $pilot;
@@ -83,7 +83,7 @@ class Flight
     /**
      * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Reservation", mappedBy="flight")
      */
-    private $flight;
+    private $flights;
 
     /**
      * @var bool

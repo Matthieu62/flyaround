@@ -43,9 +43,9 @@ class Reservation
     private $passenger;
 
     /**
-     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Flight", inversedBy="flight")
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Flight", inversedBy="flights")
      */
-    private $flights;
+    private $flight;
 
     /**
      * @var bool

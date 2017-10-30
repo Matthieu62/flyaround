@@ -86,7 +86,7 @@ class User
 
     /**
      * @var int
-     * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Review", mappedBy="id")
+     *
      *
      * @ORM\Column(name="reviews", type="integer", nullable=true)
      */
@@ -118,13 +118,6 @@ class User
      */
     private $pilots;
 
-    /**
-     * @var int
-     * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Review", mappedBy="userRated")
-     *
-     * @ORM\JoinColumn(name="userRateds")
-     */
-    private $userRateds;
 
     /**
      * @var int
