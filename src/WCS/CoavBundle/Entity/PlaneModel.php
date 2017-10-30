@@ -12,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PlaneModel
 {
+    public function __toString()
+    {
+
+        // Return the PlaneModel objet with (model and manufacturer
+        return $this-> model . "-" .$this->manufacturer;
+    }
+
+
     /**
      * @var int
      *
@@ -214,5 +222,36 @@ class PlaneModel
     public function getPlanes()
     {
         return $this->planes;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->planes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add plane
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $plane
+     *
+     * @return PlaneModel
+     */
+    public function addPlane(\WCS\CoavBundle\Entity\Flight $plane)
+    {
+        $this->planes[] = $plane;
+
+        return $this;
+    }
+
+    /**
+     * Remove plane
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $plane
+     */
+    public function removePlane(\WCS\CoavBundle\Entity\Flight $plane)
+    {
+        $this->planes->removeElement($plane);
     }
 }

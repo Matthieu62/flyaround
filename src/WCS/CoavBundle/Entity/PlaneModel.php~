@@ -12,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class PlaneModel
 {
+    public function __toString()
+    {
+
+        // Return the PlaneModel objet with (model and manufacturer
+        return $this-> model . "-" .$this->manufacturer;
+    }
+
+
     /**
      * @var int
      *
@@ -57,7 +65,7 @@ class PlaneModel
     private $isAvailable;
 
     /**
-     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Flight", inversedBy="plane")
+     * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Flight", mappedBy="plane")
      */
     private $planes;
 
@@ -190,5 +198,60 @@ class PlaneModel
     public function getIsAvailable()
     {
         return $this->isAvailable;
+    }
+
+    /**
+     * Set planes
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $planes
+     *
+     * @return PlaneModel
+     */
+    public function setPlanes(\WCS\CoavBundle\Entity\Flight $planes = null)
+    {
+        $this->planes = $planes;
+
+        return $this;
+    }
+
+    /**
+     * Get planes
+     *
+     * @return \WCS\CoavBundle\Entity\Flight
+     */
+    public function getPlanes()
+    {
+        return $this->planes;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->planes = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add plane
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $plane
+     *
+     * @return PlaneModel
+     */
+    public function addPlane(\WCS\CoavBundle\Entity\Flight $plane)
+    {
+        $this->planes[] = $plane;
+
+        return $this;
+    }
+
+    /**
+     * Remove plane
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $plane
+     */
+    public function removePlane(\WCS\CoavBundle\Entity\Flight $plane)
+    {
+        $this->planes->removeElement($plane);
     }
 }

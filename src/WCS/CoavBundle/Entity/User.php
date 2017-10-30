@@ -12,6 +12,14 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class User
 {
+
+    public function __toString()
+    {
+
+        // Return the User objet with userName, firstName, role
+        return $this-> userName . "-" .$this->firstName . " " . $this->role;
+
+    }
     /**
      * @var int
      *
@@ -466,5 +474,63 @@ class User
     public function getReservations()
     {
         return $this->reservations;
+    }
+
+    /**
+     * Set pilots
+     *
+     * @param \WCS\CoavBundle\Entity\Flight $pilots
+     *
+     * @return User
+     */
+    public function setPilots(\WCS\CoavBundle\Entity\Flight $pilots = null)
+    {
+        $this->pilots = $pilots;
+
+        return $this;
+    }
+
+    /**
+     * Get pilots
+     *
+     * @return \WCS\CoavBundle\Entity\Flight
+     */
+    public function getPilots()
+    {
+        return $this->pilots;
+    }
+
+    /**
+     * Add reviewAuthor
+     *
+     * @param \WCS\CoavBundle\Entity\Review $reviewAuthor
+     *
+     * @return User
+     */
+    public function addReviewAuthor(\WCS\CoavBundle\Entity\Review $reviewAuthor)
+    {
+        $this->reviewAuthors[] = $reviewAuthor;
+
+        return $this;
+    }
+
+    /**
+     * Remove reviewAuthor
+     *
+     * @param \WCS\CoavBundle\Entity\Review $reviewAuthor
+     */
+    public function removeReviewAuthor(\WCS\CoavBundle\Entity\Review $reviewAuthor)
+    {
+        $this->reviewAuthors->removeElement($reviewAuthor);
+    }
+
+    /**
+     * Get reviewAuthors
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReviewAuthors()
+    {
+        return $this->reviewAuthors;
     }
 }

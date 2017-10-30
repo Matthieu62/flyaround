@@ -16,7 +16,6 @@ class Terrain
 
     public function __toString()
     {
-        // TODO: Implement __toString() method.
 
         // Return the Terrain objet with (icao - name - zipcode format, when --toString is called
         return $this-> icao . "-" .$this->name . " " . $this->zipCode;

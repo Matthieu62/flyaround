@@ -12,6 +12,12 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Review
 {
+    public function __toString()
+    {
+
+        // Return the Flight objet with departure, arrival,seatplace
+        return $this-> reviewAuthor . "-" .$this->text . " " . $this->publicationDate;
+    }
     /**
      * @var int
      *
@@ -29,16 +35,16 @@ class Review
     private $text;
 
     /**
-     * @var int
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
      *
-     * @ORM\Column(name="userRated", type="integer")
      */
     private $userRated;
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="reviewAuthor", type="integer")
+     * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\User", inversedBy="reviewAuthors")
+     * @ORM\JoinColumn(nullable=false)
      */
     private $reviewAuthor;
 
@@ -55,6 +61,8 @@ class Review
      * @ORM\Column(name="note", type="smallint")
      */
     private $note;
+
+
 
 
     /**
