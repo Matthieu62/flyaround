@@ -16,7 +16,7 @@ class Review
     {
 
         // Return the Flight objet with departure, arrival,seatplace
-        return $this-> reviewAuthor . "-" .$this->text . " " . $this->publicationDate;
+        return $this-> reviewAuthor . "-" .$this->text ;
     }
     /**
      * @var int

@@ -192,6 +192,20 @@ class Reservation
     /**
      * Constructor
      */
+
+
+    /**
+     * Get passengers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPassengers()
+    {
+        return $this->passengers;
+    }
+    /**
+     * Constructor
+     */
     public function __construct()
     {
         $this->passengers = new \Doctrine\Common\Collections\ArrayCollection();
@@ -219,15 +233,5 @@ class Reservation
     public function removePassenger(\WCS\CoavBundle\Entity\User $passenger)
     {
         $this->passengers->removeElement($passenger);
-    }
-
-    /**
-     * Get passengers
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPassengers()
-    {
-        return $this->passengers;
     }
 }

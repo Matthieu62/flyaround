@@ -21,10 +21,6 @@ class Flight
 
     }
 
-
-
-
-
     /**
      * @var int
      *
