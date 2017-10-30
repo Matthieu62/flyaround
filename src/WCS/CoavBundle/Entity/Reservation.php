@@ -36,13 +36,6 @@ class Reservation
     private $publicationDate;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="passenger", type="string", length=32)
-     */
-    private $passenger;
-
-    /**
      * @ORM\ManyToOne(targetEntity="WCS\CoavBundle\Entity\Flight", inversedBy="flights")
      */
     private $flight;
@@ -116,30 +109,6 @@ class Reservation
     public function getPublicationDate()
     {
         return $this->publicationDate;
-    }
-
-    /**
-     * Set passenger
-     *
-     * @param string $passenger
-     *
-     * @return Reservation
-     */
-    public function setPassenger($passenger)
-    {
-        $this->passenger = $passenger;
-
-        return $this;
-    }
-
-    /**
-     * Get passenger
-     *
-     * @return string
-     */
-    public function getPassenger()
-    {
-        return $this->passenger;
     }
 
     /**
