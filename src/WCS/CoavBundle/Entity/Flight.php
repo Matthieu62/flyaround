@@ -102,8 +102,6 @@ class Flight
     private $wasDone;
 
 
-
-
     /**
      * Get id
      *

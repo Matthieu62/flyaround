@@ -123,6 +123,7 @@ class User
     /**
      * @ORM\OneToMany(targetEntity="WCS\CoavBundle\Entity\Flight", mappedBy="pilot")
      *
+     *
      */
     private $pilots;
 

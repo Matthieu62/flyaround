@@ -2,33 +2,40 @@
 
 {% block body %}
 
-    <h1>All reviews</h1>
+    <h1>Reviews list</h1>
 
     <table>
         <tbody>
         <tr>
-            <th>n°Id</th>
-            <th>Author</th>
-            <th>Rated user</th>
-            <th>note</th>
+            <th>Id</th>
             <th>Text</th>
             <th>Publication Date</th>
+            <th>Note</th>
+            <th>Actions</th>
         </tr>
         {% for review in reviews %}
             <tr>
                 <td>{{ review.id }}</td>
-                <td>{{ review.reviewAuthor }}</td>
-                <td>{{ review.userRated }}</td>
-                <td>{{ review.note }}</td>
                 <td>{{ review.text }}</td>
                 <td>{{ review.publicationDate|date('Y-m-d H:i:s') }}</td>
+                <td>{{ review.note }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('review_show', { 'id': review.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('review_edit', { 'id': review.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
     <ul>
-        <li><a href="{{ path('review_add') }}">add new review</a></li>
+        <li><a href="{{ path('review_new') }}">Create a new review</a></li>
     </ul>
 
 {% endblock %}
