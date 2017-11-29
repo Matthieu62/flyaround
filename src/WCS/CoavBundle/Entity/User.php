@@ -3,21 +3,23 @@
 namespace WCS\CoavBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
+
+
 
 /**
  * User
- *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="`user`");
  * @ORM\Entity(repositoryClass="WCS\CoavBundle\Repository\UserRepository")
  */
-class User
+class User extends BaseUser
 {
 
     public function __toString()
     {
 
         // Return the User objet with userName, firstName, role
-        return $this-> userName . "-" .$this->firstName . " " . $this->role;
+        return $this->firstName . " " . $this->role;
 
     }
     /**
@@ -27,14 +29,14 @@ class User
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
-    /**
+  /*  /**
      * @var string
      *
      * @ORM\Column(name="userName", type="string", length=32)
      */
-    private $userName;
+    //private $userName;*/
 
     /**
      * @var string
@@ -50,12 +52,12 @@ class User
      */
     private $lastName;
 
-    /**
+   /* /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=64)
      */
-    private $email;
+    //private $email;*/
 
     /**
      * @var string
@@ -74,16 +76,11 @@ class User
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="creationDate", type="datetime")
+     * @ORM\Column(name="creationDate", type="datetime" )
      */
     private $creationDate;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="role", type="string", length=16)
-     */
-    private $role;
+
 
     /**
      * @var int
@@ -148,29 +145,6 @@ class User
         return $this->id;
     }
 
-    /**
-     * Set userName
-     *
-     * @param string $userName
-     *
-     * @return User
-     */
-    public function setUserName($userName)
-    {
-        $this->userName = $userName;
-
-        return $this;
-    }
-
-    /**
-     * Get userName
-     *
-     * @return string
-     */
-    public function getUserName()
-    {
-        return $this->userName;
-    }
 
     /**
      * Set firstName
@@ -220,29 +194,7 @@ class User
         return $this->lastName;
     }
 
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
 
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
 
     /**
      * Set phoneNumber
@@ -316,29 +268,7 @@ class User
         return $this->creationDate;
     }
 
-    /**
-     * Set role
-     *
-     * @param string $role
-     *
-     * @return User
-     */
-    public function setRole($role)
-    {
-        $this->role = $role;
 
-        return $this;
-    }
-
-    /**
-     * Get role
-     *
-     * @return string
-     */
-    public function getRole()
-    {
-        return $this->role;
-    }
 
     /**
      * Set note
@@ -440,8 +370,12 @@ class User
      */
     public function __construct()
     {
+        parent::__construct();
         $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
-    }
+        $this->reviewAutor = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->creationDate = new \DateTime('now');
+
+}
 
     /**
      * Add reservation
